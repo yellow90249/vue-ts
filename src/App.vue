@@ -56,18 +56,22 @@ function getFirebaseToken() {
     });
 }
 
-
-
 function mountApp() {
   initApp();
 }
 
-function requestPermission() {
-  Notification.requestPermission().then((permission) => {
-    if (permission === 'granted') {
-      const notification = new Notification('requestPermission success');
-    }
-  });
+async function requestPermission() {
+  let permission = await Notification.requestPermission();
+  if (permission === 'granted') {
+    console.log('success');
+  } else {
+    console.log('failed');
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        const notification = new Notification('requestPermission success');
+      }
+    });
+  }
 }
 </script>
 
