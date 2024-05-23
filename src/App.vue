@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>test 123</h1>
-    <button @click="requestNotificationPermission">get token</button>
-    <p>{{ token }}</p>
+    <!-- <button @click="requestNotificationPermission">get token</button> -->
+    <!-- <p>{{ token }}</p> -->
   </div>
 </template>
 
@@ -33,46 +33,52 @@ const app = initializeApp(firebaseConfig);
 const messaging = getMessaging();
 
 // Need notification permission
-function getFirebaseToken() {
-  getToken(messaging, {
-    vapidKey:
-      'BAhp-0pFJ_8XhddWDVnSCtV0Y1sH0fGfNl5uD4VLFvRVdw02pIMwcfK_p0yQbUM6nrYAmHFhx39bdoCtJuz4h1s',
-  })
-    .then((currentToken) => {
-      if (currentToken) {
-        // Send the token to your server and update the UI if necessary
-        console.log(currentToken);
-        token.value = currentToken;
-      } else {
-        // Show permission request UI
-        console.log('No registration token available. Request permission to generate one.');
-      }
-    })
-    .catch((err) => {
-      console.log('An error occurred while retrieving token. ', err);
-      alert('Open browser notification');
-    });
-}
+// function getFirebaseToken() {
+//   getToken(messaging, {
+//     vapidKey:
+//       'BAhp-0pFJ_8XhddWDVnSCtV0Y1sH0fGfNl5uD4VLFvRVdw02pIMwcfK_p0yQbUM6nrYAmHFhx39bdoCtJuz4h1s',
+//   })
+//     .then((currentToken) => {
+//       if (currentToken) {
+//         // Send the token to your server and update the UI if necessary
+//         console.log(currentToken);
+//         token.value = currentToken;
+//       } else {
+//         // Show permission request UI
+//         console.log('No registration token available. Request permission to generate one.');
+//       }
+//     })
+//     .catch((err) => {
+//       console.log('An error occurred while retrieving token. ', err);
+//       alert('Open browser notification');
+//     });
+// }
 
-onMessage(messaging, (payload) => {
-  console.log('Message received. ', payload);
-  // ...
-});
+// onMessage(messaging, (payload) => {
+//   console.log('Message received. ', payload);
+//   // ...
+// });
 
-function requestNotificationPermission() {
-  console.log('permission status', Notification.permission);
-  if (!('Notification' in window)) {
-    alert('This browser does not support desktop notification');
-  } else if (Notification.permission === 'granted') {
-    getFirebaseToken();
-  } else if (Notification.permission !== 'denied') {
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        const notification = new Notification('requestPermission success');
-      }
-    });
-  }
-}
+// function requestNotificationPermission() {
+//   console.log('permission status', Notification.permission);
+//   if (!('Notification' in window)) {
+//     alert('This browser does not support desktop notification');
+//   } else if (Notification.permission === 'granted') {
+//     getFirebaseToken();
+//   } else if (Notification.permission !== 'denied') {
+//     Notification.requestPermission().then((permission) => {
+//       if (permission === 'granted') {
+//         const notification = new Notification('requestPermission success');
+//       }
+//     });
+//   } else {
+//     Notification.requestPermission().then((permission) => {
+//       if (permission === 'granted') {
+//         const notification = new Notification('requestPermission success');
+//       }
+//     });
+//   }
+// }
 </script>
 
 <style lang="scss" scoped></style>
