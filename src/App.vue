@@ -6,7 +6,7 @@
 
 <script setup>
 console.log('window.safari', window.safari);
-console.log('window.safari.pushnotification;', window.safari.pushnotification);
+console.log('window.safari.pushnotification', window.safari.pushnotification);
 </script>
 
 <style lang="scss" scoped></style>
