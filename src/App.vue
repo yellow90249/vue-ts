@@ -72,7 +72,6 @@ function requestNotificationPermission() {
     });
   }
 }
-
 </script>
 
 <style lang="scss" scoped></style>
