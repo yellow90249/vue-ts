@@ -56,10 +56,7 @@ function getFirebaseToken() {
     });
 }
 
-onMessage(messaging, (payload) => {
-  console.log('Message received. ', payload);
-  // ...
-});
+
 
 function mountApp() {
   initApp();
