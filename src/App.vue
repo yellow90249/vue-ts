@@ -1,79 +1,14 @@
 <template>
   <div>
-    <h1>test 123</h1>
-    <button @click="requestPermission">request permission</button>
-    <button @click="mountApp">mount app</button>
+    <h1>123</h1>
+    <p>{{ token }}</p>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const token = ref('');
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getMessaging, getToken, onMessage } from 'firebase/messaging';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyA4_9q1RCXpjgq3YCL0mdhjCgskqEMsHhM',
-  authDomain: 'first-project-e227a.firebaseapp.com',
-  projectId: 'first-project-e227a',
-  storageBucket: 'first-project-e227a.appspot.com',
-  messagingSenderId: '896215768638',
-  appId: '1:896215768638:web:24ced2867af9eb9fb4bb6f',
-};
-
-function initApp() {
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-
-  // Get registration token. Initially this makes a network call, once retrieved
-  // subsequent calls to getToken will return from cache.
-  const messaging = getMessaging();
-}
-
-// Need notification permission
-function getFirebaseToken() {
-  getToken(messaging, {
-    vapidKey:
-      'BAhp-0pFJ_8XhddWDVnSCtV0Y1sH0fGfNl5uD4VLFvRVdw02pIMwcfK_p0yQbUM6nrYAmHFhx39bdoCtJuz4h1s',
-  })
-    .then((currentToken) => {
-      if (currentToken) {
-        // Send the token to your server and update the UI if necessary
-        console.log(currentToken);
-        token.value = currentToken;
-      } else {
-        // Show permission request UI
-        console.log('No registration token available. Request permission to generate one.');
-      }
-    })
-    .catch((err) => {
-      console.log('An error occurred while retrieving token. ', err);
-      alert('Open browser notification');
-    });
-}
-
-function mountApp() {
-  initApp();
-}
-
-async function requestPermission() {
-  let permission = await Notification.requestPermission();
-  console.log('permission: ', permission);
-  if (permission === 'granted') {
-    console.log('success');
-  } else {
-    console.log('failed');
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        const notification = new Notification('requestPermission success');
-      }
-    });
-  }
-}
+console.log('Notification', Notification);
+console.log('Notification.requestPermission', Notification.requestPermission);
+console.log('Notification.permission', Notification.permission);
 </script>
 
 <style lang="scss" scoped></style>
