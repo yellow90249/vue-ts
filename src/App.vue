@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>123</h1>
+    <button @click="requestNotificationPermission">get token</button>
     <p>{{ token }}</p>
   </div>
 </template>
@@ -72,7 +73,6 @@ function requestNotificationPermission() {
   }
 }
 
-requestNotificationPermission();
 </script>
 
 <style lang="scss" scoped></style>
