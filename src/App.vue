@@ -62,6 +62,7 @@ function mountApp() {
 
 async function requestPermission() {
   let permission = await Notification.requestPermission();
+  console.log('permission: ', permission);
   if (permission === 'granted') {
     console.log('success');
   } else {
