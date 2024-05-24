@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+console.log('Notification.permission: ', Notification.permission);
 function notifyMe() {
   if (!('Notification' in window)) {
     // Check if the browser supports notifications
