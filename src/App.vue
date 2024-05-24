@@ -10,6 +10,15 @@ const versionMatch = navigator.userAgent.match(/Version\/(\d+\.\d+)/);
 console.log('🚀 ~ versionMatch:', versionMatch);
 const safariVersion = versionMatch ? versionMatch[1] : null;
 console.log('🚀 ~ safariVersion:', safariVersion);
+
+function isIosVersionSupportNotification() {
+  const versionMatch = navigator.userAgent.match(/Version\/(\d+\.\d+)/);
+  const safariVersion = versionMatch ? versionMatch[1] : null;
+  if (Number(safariVersion) >= 16.4) return true;
+  else return false;
+}
+
+console.log('isIosVersionSupportNotification', isIosVersionSupportNotification());
 </script>
 
 <style scoped></style>
