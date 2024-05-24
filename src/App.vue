@@ -1,27 +1,33 @@
 <template>
   <div>
-    <button @click="askForNotificationPermission">test</button>
+    <button @click="notifyMe">test</button>
   </div>
 </template>
 
 <script setup lang="ts">
-function askForNotificationPermission() {
-  Notification.requestPermission(function (result) {
-    // 這裡result只會有兩種結果：一個是用戶允許(granted)，另一個是用戶封鎖(denied)
-    console.log('User Choice', result);
-    if (result !== 'granted') {
-      console.log('No notification permission granted!');
-    } else {
-      alert('success');
-    }
-  });
-}
+function notifyMe() {
+  if (!('Notification' in window)) {
+    // Check if the browser supports notifications
+    alert('This browser does not support desktop notification');
+  } else if (Notification.permission === 'granted') {
+    // Check whether notification permissions have already been granted;
+    // if so, create a notification
+    const notification = new Notification('Hi there!');
+    // …
+  } else if (Notification.permission !== 'denied') {
+    // We need to ask the user for permission
+    Notification.requestPermission().then((permission) => {
+      // If the user accepts, let's create a notification
+      if (permission === 'granted') {
+        const notification = new Notification('Hi there!');
+        // …
+      }
+    });
+  }
 
-// if ('Notification' in window) {
-//   for (var i = 0; i < enableNotificationButtons.length; i++) {
-//     enableNotificationButtons[i].addEventListener('click', askForNotificationPermission);
-//   }
-// }
+  // At last, if the user has denied notifications, and you
+  // want to be respectful there is no need to bother them anymore.
+}
 </script>
 
 <style scoped></style>
