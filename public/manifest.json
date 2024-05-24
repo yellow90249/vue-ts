@@ -1,3 +1,10 @@
 {
-  "display": "fullscreen"
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "id": "https://deluxe-fenglisu-18b25e.netlify.app/",
+  "name": "PushDemo",
+  "short_name": "PushDemo",
+  "start_url": ".",
+  "display": "fullscreen",
+  "background_color": "blue",
+  "description": "Web Push Demo"
 }
