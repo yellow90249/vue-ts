@@ -6,7 +6,7 @@
 console.log('🚀 ~ navigator.userAgent:', navigator.userAgent);
 console.log('🚀 ~ navigator.platform:', navigator.platform);
 console.log('🚀 ~ navigator.appVersion:', navigator.appVersion);
-const version = navigator.userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
+const version = navigator.userAgent.match(/Version\/(\d+\.\d+)/);
 console.log('🚀 ~ version:', version);
 </script>
 
