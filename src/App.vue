@@ -1,34 +1,16 @@
 <template>
-  <div>
-    <button @click="notifyMe">notifyMe</button>
-  </div>
+  <div></div>
 </template>
 
 <script setup lang="ts">
-console.log('Notification.permission: ', Notification.permission);
-function notifyMe() {
-  if (!('Notification' in window)) {
-    // Check if the browser supports notifications
-    alert('This browser does not support desktop notification');
-  } else if (Notification.permission === 'granted') {
-    // Check whether notification permissions have already been granted;
-    // if so, create a notification
-    const notification = new Notification('Hi there!');
-    // …
-  } else if (Notification.permission !== 'denied') {
-    // We need to ask the user for permission
-    Notification.requestPermission().then((permission) => {
-      // If the user accepts, let's create a notification
-      if (permission === 'granted') {
-        const notification = new Notification('Hi there!');
-        // …
-      }
-    });
+function iOSversion() {
+  if (/iP(hone|od|ad)/.test(navigator.platform)) {
+    // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+    var v = navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)!;
+    console.log(v);
   }
-
-  // At last, if the user has denied notifications, and you
-  // want to be respectful there is no need to bother them anymore.
 }
+iOSversion();
 </script>
 
 <style scoped></style>
