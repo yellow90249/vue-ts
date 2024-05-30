@@ -12,12 +12,12 @@ import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA4_9q1RCXpjgq3YCL0mdhjCgskqEMsHhM',
-  authDomain: 'first-project-e227a.firebaseapp.com',
-  projectId: 'first-project-e227a',
-  storageBucket: 'first-project-e227a.appspot.com',
-  messagingSenderId: '896215768638',
-  appId: '1:896215768638:web:24ced2867af9eb9fb4bb6f',
+  apiKey: 'AIzaSyAdaRMrPlWge1BcUekv1nfFB4KIIdUymvA',
+  authDomain: 'yapay-eb8c2.firebaseapp.com',
+  projectId: 'yapay-eb8c2',
+  storageBucket: 'yapay-eb8c2.appspot.com',
+  messagingSenderId: '283539932719',
+  appId: '1:283539932719:web:04a758dcd8ff1efc94a8da',
 };
 
 const app = initializeApp(firebaseConfig);
@@ -26,7 +26,7 @@ const messaging = getMessaging();
 
 getToken(messaging, {
   vapidKey:
-    'BAhp-0pFJ_8XhddWDVnSCtV0Y1sH0fGfNl5uD4VLFvRVdw02pIMwcfK_p0yQbUM6nrYAmHFhx39bdoCtJuz4h1s',
+    'BKCbYl-MA1KW9marfaFr0iJnTNMXE83m5F198C4MT_5QVgHLB1VuibMVjAwOLrur0sx89ou_Vbr81gAuSpuNQqk',
 })
   .then((currentToken) => {
     if (currentToken) {
